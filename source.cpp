@@ -1,4 +1,4 @@
-#include <bits/stdc++.h>
+#include <iostream>
 #include "client.h" 
 #include "admin.h"
 #include <string>
@@ -18,6 +18,10 @@ void client::new_account(string identity, int bal, int pass) {
     temp->name = identity;
     temp->balance = bal;
     temp->passcode = pass; 
+
+    cout << temp->balance << endl;
+    cout << temp->name << endl;
+    cout << temp->passcode << endl;
 
     if (head != NULL) {
         curr = head;

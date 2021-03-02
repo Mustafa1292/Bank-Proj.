@@ -1,6 +1,7 @@
 #include <iostream>
 #include "client.h"
 #include "admin.h"
+//#include "source.cpp"
 
 using namespace std; 
 
@@ -27,37 +28,50 @@ int main (){
         
         switch(customer_input) {
             case 1:
-                system("CLS");
+                system("clear");
+                //client new_customer;
+                // string name = "";
+                // int passcode = 0;
+                // int bal = 0;
+                // cout << "Please Enter your new username\n";
+                // cin >> name;
+                // cout << "Please Enter your new Password\n"; 
+                // cin >> passcode;
+                // cout << "Please enter your current balance\n";
+                // cin >> bal;
+
+                //new_customer.new_account(name, bal, passcode);
                 cout << "case 1\n";
-                    customer_menu();
-                    cin >> customer_input;
-                    break;
+                customer_menu();
+                cin >> customer_input;
+                break;
             case 2:
-                system("CLS");
+                system("clear");
+                cout << "Please Enter the Username\n";
                 cout << "case 2\n";
                     customer_menu();
                     cin >> customer_input;
                     break;
             case 3:
-                system("CLS");
+                system("clear");
                 cout << "case 3\n";
                     customer_menu();
                     cin >> customer_input;
                     break;
             case 4:
-                system("CLS");
+                system("clear");
                 cout << "case 4\n";
                     customer_menu();
                     cin >> customer_input;
                     break;
             case 5:
-                system("CLS");
+                system("clear");
                 cout << "case 5\n";
                     customer_menu();
                     cin >> customer_input;
                     break;
             case 6:
-                system("CLS");
+                system("clear");
                 cout << "case 6\n";
                     customer_menu();
                     cin >> customer_input;
