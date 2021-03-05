@@ -7,7 +7,6 @@ using namespace std;
 
 
 int customer_input;
-client list;
 void customer_menu() {
         cout << "      _____________________________________________\n";
         cout << "     |                                             |\n";
@@ -33,8 +32,8 @@ cout << "Your selection ";
 }
 
 int main (){
-    int x, initial_password, initial_deposit, add_deposit;
-    string initial_name;
+    int x, initial_password, initial_deposit, add_deposit, withdrawal, verify_password;
+    string initial_name, transfer, verify_name;
     customer_menu();
     cin >> customer_input;
     
@@ -50,7 +49,6 @@ int main (){
                 cin >> initial_password;
                 cout << "Please enter starting deposit "; // 0$ can be added 
                 cin >> initial_deposit;
-                list.new_account(initial_name, initial_password, initial_deposit);
                 cout << "Thank you your new account info is\n\n Name: " << initial_name << endl << " Password: " << initial_password << endl << " Deposit: " << initial_deposit << endl << endl << endl;
                 system("PAUSE");
                 system("CLEAR");
@@ -70,21 +68,38 @@ int main (){
                     customer_menu();
                     cin >> customer_input;
                     break;
-            case 3:
+
+
+            case 3: //same as deposit, but can't withdraw more than balance
                 system("CLS");
-                cout << "case 3\n";
+                cout << "Plsease enter withdrawal amount "; 
+                cin >> withdrawal;
+                cout << "\nYour withdrawal amount is " << withdrawal << endl << endl;
+                system("PAUSE");
+                system("CLEAR");
                     customer_menu();
                     cin >> customer_input;
                     break;
-            case 4:
+
+            case 4: // need a way to transfer from users account to other user
                 system("CLS");
-                cout << "case 4\n";
+                cout << "Last thing to work on\n";
+                cout << "Please enter whose account you want to transfer "; 
+                cin >> transfer;
+                system("PAUSE");
+                system("CLEAR");
                     customer_menu();
                     cin >> customer_input;
                     break;
+
             case 5:
                 system("CLS");
-                cout << "case 5\n";
+                cout << "Enter your account name and password\n";
+                cout << "Name: "; cin >> verify_name;
+                cout << "\nPassword: "; cin >> verify_password;
+                cout << "\n\n Thank you, your account has been deleted.\n\n"; 
+                system("PAUSE");
+                system("CLEAR");
                     customer_menu();
                     cin >> customer_input;
                     break;
