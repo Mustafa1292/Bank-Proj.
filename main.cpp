@@ -1,8 +1,10 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <string>
 #include "client.h"
 #include "admin.h"
 
 using namespace std; 
+
 
 int customer_input;
 void customer_menu() {
@@ -12,36 +14,57 @@ void customer_menu() {
         cout << "     |              C++ Bank project               |\n";
         cout << "     |            Fast, safe and secure            |\n";
         cout << "     |                                             |\n";
-        cout << "     |_____________________________________________|\n";
+        cout << "     |_____________________________________________|\n\n";
 
-
+cout << "===================================================================\n\n";
 
         cout << "Please make a Selection:\n";
 
-    cout << "\n1   -      Create an account\n"
-         << "2   -      Deposit\n"
-         << "3   -      Withdrawal\n"
-         << "4   -      Transfer\n"
-         << "5   -      Delete account\n"
-         << "6   -      Exit\n";
+    cout << "\n 1   -      Create an account\n"
+         << " 2   -      Deposit\n"
+         << " 3   -      Withdrawal\n"
+         << " 4   -      Transfer\n"
+         << " 5   -      Delete account\n"
+         << " 6   -      Exit\n\n";
+
+cout << "===================================================================\n\n\n";
+cout << "Your selection ";
 }
 
 int main (){
+    int x, initial_password, initial_deposit, add_deposit;
+    string initial_name;
     customer_menu();
     cin >> customer_input;
-
-    while (customer_input != 6) {               //Functions for all 6 cases will be added from the header files.
+    
+    while (customer_input != 6) {
         
         switch(customer_input) {
+
             case 1:
-                system("CLS");
-                cout << "case 1\n";
+                system("CLEAR");
+                cout << "Please enter name ";
+                cin >> initial_name;
+                cout << "Please set password ";
+                cin >> initial_password;
+                cout << "Please enter starting deposit "; // 0$ can be added 
+                cin >> initial_deposit;
+                cout << "Thank you your new account info is\n\n Name: " << initial_name << endl << " Password: " << initial_password << endl << " Deposit: " << initial_deposit << endl << endl << endl;
+                system("PAUSE");
+                system("CLEAR");
                     customer_menu();
                     cin >> customer_input;
                     break;
-            case 2:
-                system("CLS");
-                cout << "case 2\n";
+            
+            
+            case 2: // need a function to just increment the deposit value. Will be done through find function to locate the account
+                system("CLEAR");
+                cout << "Please enter deposit ammount ";
+                cin >> add_deposit;
+                cout << "function will come here\n";
+                cout << "Thank your deposit has been added\n\n\n";
+                system("PAUSE");
+                system("CLEAR");
                     customer_menu();
                     cin >> customer_input;
                     break;
