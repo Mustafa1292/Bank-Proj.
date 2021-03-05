@@ -7,6 +7,7 @@ using namespace std;
 
 
 int customer_input;
+client list;
 void customer_menu() {
         cout << "      _____________________________________________\n";
         cout << "     |                                             |\n";
@@ -49,6 +50,7 @@ int main (){
                 cin >> initial_password;
                 cout << "Please enter starting deposit "; // 0$ can be added 
                 cin >> initial_deposit;
+                list.new_account(initial_name, initial_password, initial_deposit);
                 cout << "Thank you your new account info is\n\n Name: " << initial_name << endl << " Password: " << initial_password << endl << " Deposit: " << initial_deposit << endl << endl << endl;
                 system("PAUSE");
                 system("CLEAR");

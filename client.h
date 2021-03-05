@@ -1,5 +1,6 @@
 #ifndef customer_h
 #define customer_h
+#include "admin.h"
 #include <string>
 
 using namespace std;
@@ -15,6 +16,7 @@ class client {
         node* head;
         node* curr;
         node* temp;
+        friend class Admin;
     public:
         client();
 
