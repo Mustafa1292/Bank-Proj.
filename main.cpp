@@ -7,6 +7,7 @@ using namespace std;
 
 
 int customer_input;
+int Admin_input;
 void customer_menu() {
         cout << "      _____________________________________________\n";
         cout << "     |                                             |\n";
@@ -29,6 +30,17 @@ cout << "===================================================================\n\n
 
 cout << "===================================================================\n\n\n";
 cout << "Your selection ";
+}
+void admin_menu(){
+    cout << "===================================================================\n\n";
+    cout << "Please make a Selection:\n";
+    cout << "\n 1   -      See ALL Clients\n";
+    cout << " 2   -      Create an account\n"
+         << " 3   -      Deposit\n"
+         << " 4   -      Withdrawal\n"
+         << " 5   -      Transfer\n"
+         << " 6   -      Delete account\n"
+         << " 7   -      Exit\n\n";
 }
 
 int main (){
@@ -103,7 +115,36 @@ int main (){
                     customer_menu();
                     cin >> customer_input;
                     break;
-            
+            case 2001:
+                system("clear");
+                cout << "Welcome Admin:" << endl;
+                admin_menu();
+                cin >> Admin_input;
+                while(Admin_input != 7){
+                    switch(Admin_input){
+                        case 1:
+                            cout << "Here is a list of every client" << endl;
+                            break;
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        default:
+                            cout << "Not a valid option please make a selection from the menu";
+                            admin_menu();
+                            cin >> Admin_input;
+
+                    }
+                }
+                customer_menu();
+                cin >> customer_input;
+                break;
             default:
                 cout << "Not a valid option please make a selection from the menu";
                 customer_menu();

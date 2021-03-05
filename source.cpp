@@ -7,6 +7,7 @@ using namespace std;
 
 int counter = 0; // tells where the node is in the list. more effiecient if each acct. had a unique ID
 
+
 client::client() {
     head = NULL;
     curr = 0;
@@ -34,6 +35,7 @@ void client::new_account(string identity, int bal, int pass) {
     else {
         head = temp;
     }
+    
 }
 
 void client::delete_account(string identity) { // needs testing then implement actual delete through counter
@@ -84,3 +86,14 @@ void client::setDeposit(string identity, int passcode, int amount) {
         cout << "The account information does not match our records please try again" << endl;
     }
 }
+
+void client::setWithdraw(string identity, int passcode, int amount){
+    curr = head;
+    if(find(identity, passcode) == true){
+        for(int i =0; i <= counter; i++){
+            curr = curr->next;
+        }
+        curr->balance = (curr->balance-amount);
+    }
+}
+
