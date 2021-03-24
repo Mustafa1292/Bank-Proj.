@@ -2,12 +2,12 @@
 #include <string>
 #include "client.h"
 #include "admin.h"
+#include "source.cpp"
 
 using namespace std; 
 
 
 int customer_input;
-int Admin_input;
 void customer_menu() {
         cout << "      _____________________________________________\n";
         cout << "     |                                             |\n";
@@ -31,29 +31,21 @@ cout << "===================================================================\n\n
 cout << "===================================================================\n\n\n";
 cout << "Your selection ";
 }
-void admin_menu(){
-    cout << "===================================================================\n\n";
-    cout << "Please make a Selection:\n";
-    cout << "\n 1   -      See ALL Clients\n";
-    cout << " 2   -      Create an account\n"
-         << " 3   -      Deposit\n"
-         << " 4   -      Withdrawal\n"
-         << " 5   -      Transfer\n"
-         << " 6   -      Delete account\n"
-         << " 7   -      Exit\n\n";
-}
+
 
 int main (){
     int x, initial_password, initial_deposit, add_deposit, withdrawal, verify_password;
     string initial_name, transfer, verify_name;
     customer_menu();
     cin >> customer_input;
-    
+
+
+    client testing_object;
     while (customer_input != 6) {
         
         switch(customer_input) {
 
-            case 1:
+            case 1: {
                 system("CLEAR");
                 cout << "Please enter name ";
                 cin >> initial_name;
@@ -64,10 +56,11 @@ int main (){
                 cout << "Thank you your new account info is\n\n Name: " << initial_name << endl << " Password: " << initial_password << endl << " Deposit: " << initial_deposit << endl << endl << endl;
                 system("PAUSE");
                 system("CLEAR");
+                     testing_object.new_account(initial_name, initial_deposit,initial_password);
                     customer_menu();
                     cin >> customer_input;
                     break;
-            
+            }
             
             case 2: // need a function to just increment the deposit value. Will be done through find function to locate the account
                 system("CLEAR");
@@ -75,8 +68,13 @@ int main (){
                 cin >> add_deposit;
                 cout << "function will come here\n";
                 cout << "Thank your deposit has been added\n\n\n";
+
+                // admin output; //testing admin menu
+                // output.print(testing_object);
+
                 system("PAUSE");
                 system("CLEAR");
+                
                     customer_menu();
                     cin >> customer_input;
                     break;
@@ -115,36 +113,7 @@ int main (){
                     customer_menu();
                     cin >> customer_input;
                     break;
-            case 2001:
-                system("clear");
-                cout << "Welcome Admin:" << endl;
-                admin_menu();
-                cin >> Admin_input;
-                while(Admin_input != 7){
-                    switch(Admin_input){
-                        case 1:
-                            cout << "Here is a list of every client" << endl;
-                            break;
-                        case 2:
-                            break;
-                        case 3:
-                            break;
-                        case 4:
-                            break;
-                        case 5:
-                            break;
-                        case 6:
-                            break;
-                        default:
-                            cout << "Not a valid option please make a selection from the menu";
-                            admin_menu();
-                            cin >> Admin_input;
-
-                    }
-                }
-                customer_menu();
-                cin >> customer_input;
-                break;
+            
             default:
                 cout << "Not a valid option please make a selection from the menu";
                 customer_menu();
