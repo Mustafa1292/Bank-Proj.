@@ -1,4 +1,4 @@
-#include <iostream>
+#include <bits/stdc++.h>
 #include "client.h" 
 #include "admin.h"
 #include <string>
@@ -7,11 +7,21 @@ using namespace std;
 
 int counter = 0; // tells where the node is in the list. more effiecient if each acct. had a unique ID
 
-
 client::client() {
     head = NULL;
-    curr = 0;
-    temp = '\0';
+    curr = NULL;
+    temp = NULL;
+}
+
+void admin::print(client& object)  {
+    node* traverse = object.head;
+    while(traverse != NULL) {
+        cout << traverse->name << endl;
+        cout << traverse->balance << endl; 
+        cout << traverse->passcode<< endl;
+        traverse = traverse->next;
+    }
+    
 }
 
 void client::new_account(string identity, int bal, int pass) {
@@ -19,10 +29,6 @@ void client::new_account(string identity, int bal, int pass) {
     temp->name = identity;
     temp->balance = bal;
     temp->passcode = pass; 
-
-    cout << temp->balance << endl;
-    cout << temp->name << endl;
-    cout << temp->passcode << endl;
 
     if (head != NULL) {
         curr = head;
@@ -35,12 +41,12 @@ void client::new_account(string identity, int bal, int pass) {
     else {
         head = temp;
     }
-    
 }
 
 void client::delete_account(string identity) { // needs testing then implement actual delete through counter
     int del_counter = 0;
-    curr = head;
+    curr = temp = head;
+    
     while(curr->next != NULL) {
         if (curr->name == identity){
             cout << curr->name << endl;
@@ -51,6 +57,10 @@ void client::delete_account(string identity) { // needs testing then implement a
         del_counter++;
         curr = curr->next;
 
+    }
+    for (int i = 0; i <= del_counter; i++) {
+        curr = curr->next;
+        
     }
 }
 
@@ -86,14 +96,3 @@ void client::setDeposit(string identity, int passcode, int amount) {
         cout << "The account information does not match our records please try again" << endl;
     }
 }
-
-void client::setWithdraw(string identity, int passcode, int amount){
-    curr = head;
-    if(find(identity, passcode) == true){
-        for(int i =0; i <= counter; i++){
-            curr = curr->next;
-        }
-        curr->balance = (curr->balance-amount);
-    }
-}
-
