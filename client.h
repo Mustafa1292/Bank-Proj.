@@ -1,22 +1,23 @@
 #ifndef customer_h
 #define customer_h
-#include "admin.h"
 #include <string>
 
 using namespace std;
 
-class client {
-    private:
-        struct node {
+class node {
+        public:
             string name;
             int balance;
-            int passcode; // not needed
+            int passcode;
             node* next;
+        
         };
+
+class client {
+    private:
         node* head;
         node* curr;
         node* temp;
-        friend class Admin;
     public:
         client();
 
@@ -33,6 +34,9 @@ class client {
 
         void setWithdraw(string identity, int passcode, int amount);
         int getWithdraw();
+    
+    
+    friend class admin;
         
 };
 
