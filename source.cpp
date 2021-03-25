@@ -16,31 +16,92 @@ client::client() {
 void admin::print(client& object)  {
     node* traverse = object.head;
     while(traverse != NULL) {
-        cout << traverse->name << endl;
-        cout << traverse->balance << endl; 
-        cout << traverse->passcode<< endl;
+        cout << "client name: " << traverse->name << endl;
+        cout << "Password: " << traverse->passcode << endl; 
+        cout << "Balance: " << traverse->balance<< endl;
+        cout << "\n";
         traverse = traverse->next;
     }
     
 }
 
+void admin::menu() {
+    system("CLEAR");
+    cout << "--------Adimin control---------\n";
+    cout << "Please make a selection:\n\n\n";
+    cout << "1) - List of client members\n";
+    cout << "2) - Sort all clients\n";
+    cout << "3) - Total bank balance\n";
+    cout << "4) - Total amount of clients\n";
+    cout << "5) - High - Low\n"; // which customer has most/least amount of money
+    cout << "6) - exit\n\n\n";
+}
+
+void admin::admin_menu(client& object) {
+    admin output1;
+    
+    admin::menu();
+
+    int admin_select;
+    cin >> admin_select;
+
+    while(admin_select != 7) {
+
+    switch (admin_select) {
+        case 1: 
+            system("CLEAR");
+            output1.print(object);
+            system("PAUSE");
+            system("CLEAR");
+            admin::menu();
+            cin >> admin_select;
+            break;
+        case 2: 
+            cout << "sort funcs";
+            admin::menu();
+            cin >> admin_select;
+            break;
+        case 3: 
+            cout << "balance";
+            admin::menu();
+            cin >> admin_select;
+            break;
+        case 4: 
+            cout << "total clients";
+            admin::menu();
+            cin >> admin_select;
+            break;
+        case 5: 
+            cout << "high - low";
+            admin::menu();
+            cin >> admin_select;
+            break;
+        default:
+            cout << "Unfit to be admin smh";
+            break;
+    }
+    }
+}
+ 
 void client::new_account(string identity, int bal, int pass) {
     node* temp = new node;
     temp->name = identity;
     temp->balance = bal;
     temp->passcode = pass; 
 
-    if (head != NULL) {
-        curr = head;
-        while(curr->next != NULL) {
-            curr = curr->next;
-        }
-        curr->next = temp;
-    } 
+    // if (head != NULL) {
+    //     curr = head;
+    //     while(curr->next != NULL) {
+    //         curr = curr->next;
+    //     }
+    //     curr->next = temp;
+    // } 
 
-    else {
-        head = temp;
-    }
+    // else {
+    //     head = temp;
+    //}
+    temp->next = head;
+    head = temp;
 }
 
 void client::delete_account(string identity) { // needs testing then implement actual delete through counter
