@@ -9,6 +9,7 @@ using namespace std;
 
 int customer_input;
 void customer_menu() {
+    system("CLEAR");
         cout << "      _____________________________________________\n";
         cout << "     |                                             |\n";
         cout << "     |                                             |\n";
@@ -36,13 +37,19 @@ cout << "Your selection ";
 int main (){
     int x, initial_password, initial_deposit, add_deposit, withdrawal, verify_password;
     string initial_name, transfer, verify_name;
+    client testing_object;
+    admin output;
+    bool flag = false;
     customer_menu();
     cin >> customer_input;
 
+        // if (customer_input == 500) {
+        //     output.admin_menu(testing_object);
+        // }
+        // else {
 
-    client testing_object;
     while (customer_input != 6) {
-        
+    
         switch(customer_input) {
 
             case 1: {
@@ -69,8 +76,8 @@ int main (){
                 cout << "function will come here\n";
                 cout << "Thank your deposit has been added\n\n\n";
 
-                // admin output; //testing admin menu
-                // output.print(testing_object);
+                admin output; //testing admin menu
+                
 
                 system("PAUSE");
                 system("CLEAR");
@@ -113,15 +120,20 @@ int main (){
                     customer_menu();
                     cin >> customer_input;
                     break;
+            case 500:
+                    output.admin_menu(testing_object);
+                    
+            // default:
+            //     cout << "\nNot a valid option please make a selection from the menu\n\n\n";
+            //     system("PAUSE");
+            //     customer_menu();
+            //     cin >> customer_input;
+            //     break;
+                }
             
-            default:
-                cout << "Not a valid option please make a selection from the menu";
-                customer_menu();
-                cin >> customer_input;
-                break;
+            //}
         }
-        
-    }
+  
 
     return 0;
 }
