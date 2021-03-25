@@ -16,6 +16,8 @@ class admin {
     
     public:
         void print(client& object); //passing class object by reference 
+        void admin_menu(client& object);
+        void menu();
 };
 #endif
 
