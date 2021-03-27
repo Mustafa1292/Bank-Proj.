@@ -44,8 +44,9 @@ void admin::admin_menu(client& object) {
 
     int admin_select;
     cin >> admin_select;
-
-    while(admin_select != 7) {
+cout << "stop\n";
+    while(admin_select != 6) {
+        
 
     switch (admin_select) {
         case 1: 
@@ -78,9 +79,14 @@ void admin::admin_menu(client& object) {
             break;
         default:
             cout << "Unfit to be admin smh";
+            admin::menu();
+            cin >> admin_select;
             break;
     }
+    
     }
+    
+    //system("PAUSE");
 }
  
 void client::new_account(string identity, int bal, int pass) {
@@ -88,18 +94,7 @@ void client::new_account(string identity, int bal, int pass) {
     temp->name = identity;
     temp->balance = bal;
     temp->passcode = pass; 
-
-    // if (head != NULL) {
-    //     curr = head;
-    //     while(curr->next != NULL) {
-    //         curr = curr->next;
-    //     }
-    //     curr->next = temp;
-    // } 
-
-    // else {
-    //     head = temp;
-    //}
+    
     temp->next = head;
     head = temp;
 }
