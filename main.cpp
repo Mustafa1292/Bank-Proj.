@@ -36,7 +36,7 @@ cout << "Your selection ";
 
 int main (){
     int x, initial_password, initial_deposit, add_deposit, withdrawal, verify_password;
-    string initial_name, transfer, verify_name;
+    string initial_name, transfer, verify_name, find_name;;
     client testing_object;
     admin output;
     bool flag = false;
@@ -71,8 +71,12 @@ int main (){
             
             case 2: // need a function to just increment the deposit value. Will be done through find function to locate the account
                 system("CLEAR");
-                cout << "Please enter deposit ammount ";
+                
+                cout << "Please enter name: ";
+                cin >> find_name;
+                cout << "Please enter deposit ammount: ";
                 cin >> add_deposit;
+                testing_object.find(find_name, add_deposit);
                 cout << "function will come here\n";
                 cout << "Thank your deposit has been added\n\n\n";
 
