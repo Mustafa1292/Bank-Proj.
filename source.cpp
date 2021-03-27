@@ -44,7 +44,6 @@ void admin::admin_menu(client& object) {
 
     int admin_select;
     cin >> admin_select;
-cout << "stop\n";
     while(admin_select != 6) {
         
 
@@ -94,7 +93,7 @@ void client::new_account(string identity, int bal, int pass) {
     temp->name = identity;
     temp->balance = bal;
     temp->passcode = pass; 
-    
+
     temp->next = head;
     head = temp;
 }
@@ -121,34 +120,24 @@ void client::delete_account(string identity) { // needs testing then implement a
 }
 
 
-bool client::find(string identity, int passcode) {
-    counter = 0; // resets counter every time it is used
+void client::find(string identity, int passcode) {
     node* find = new node;
     find = head;
 
-    while(find->next != NULL) { // traverses through the lsit
-        if (find->name == identity && find->passcode == passcode){
-            return true;
-
-        }
+    while(find->name != identity) {
         find = find->next;
-        counter++;
     }
-    return false;
-}
 
+    if (find->name == identity) {
 
-
-void client::setDeposit(string identity, int passcode, int amount) {
-    curr = head;
-    if (find(identity, passcode) == true) { // use client::find if not work
-        for (int i = 0; i <= counter; i++) { // may have to make i < counter*************
-            curr = curr->next;
-        }
-        curr->balance = (curr->balance + amount);
-    }
+    find->balance = (find->balance + passcode);
     
+    }
     else {
-        cout << "The account information does not match our records please try again" << endl;
+        cout << "Sorry we were not able to locate your account\n";
     }
 }
+
+
+
+
