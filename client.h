@@ -27,9 +27,9 @@ class client {
         void new_account(string identity, int bal, int password); // done
         void delete_account(string identity);
 
-        bool find(string identity, int passcode);
+        void find(string identity, int passcode);
 
-        void setDeposit(string identity, int passcode, int amount);
+        //void setDeposit(string identity, int passcode, int amount);
         int getDeposit(); 
 
         void setWithdraw(string identity, int passcode, int amount);
