@@ -60,7 +60,7 @@ int main (){
                 cin >> initial_password;
                 cout << "Please enter starting deposit "; // 0$ can be added 
                 cin >> initial_deposit;
-                cout << "Thank you your new account info is\n\n Name: " << initial_name << endl << " Password: " << initial_password << endl << " Deposit: " << initial_deposit << endl << endl << endl;
+                cout << "Thank you, your new account info is\n\n Name: " << initial_name << endl << " Password: " << initial_password << endl << " Deposit: " << initial_deposit << endl << endl << endl;
                 system("PAUSE");
                 system("CLEAR");
                      testing_object.new_account(initial_name, initial_deposit,initial_password);
@@ -122,13 +122,16 @@ int main (){
                     break;
             case 500:
                     output.admin_menu(testing_object);
+                    customer_menu();
+                    cin >> customer_input;
+                    break;
                     
-            // default:
-            //     cout << "\nNot a valid option please make a selection from the menu\n\n\n";
-            //     system("PAUSE");
-            //     customer_menu();
-            //     cin >> customer_input;
-            //     break;
+            default:
+                cout << "\nNot a valid option please make a selection from the menu\n\n\n";
+                system("PAUSE");
+                customer_menu();
+                cin >> customer_input;
+                break;
                 }
             
             //}
