@@ -39,6 +39,7 @@ void admin::menu() {
 
 void admin::admin_menu(client& object) {
     admin output1;
+    // client object;
     
     admin::menu();
 
@@ -57,22 +58,22 @@ void admin::admin_menu(client& object) {
             cin >> admin_select;
             break;
         case 2: 
-            cout << "sort funcs";
+            admin::sort(object);
             admin::menu();
             cin >> admin_select;
             break;
         case 3: 
-            cout << "balance";
+            admin::total_balance(object);
             admin::menu();
             cin >> admin_select;
             break;
         case 4: 
-            cout << "total clients";
+            admin::total_clients(object);
             admin::menu();
             cin >> admin_select;
             break;
         case 5: 
-            cout << "high - low";
+            admin::overview(object);
             admin::menu();
             cin >> admin_select;
             break;
@@ -183,4 +184,102 @@ void client::find_transfer(string person_1, string person_2, int amount) {
         person1->balance = (person1->balance - amount);
         person2->balance = (person2->balance + amount);
     }
+}
+
+void admin::sort(client& object) {
+    priority_queue<string> pq;
+    priority_queue<int> qp;
+    node* add = new node;
+    add = object.head;
+    int type;
+    system("CLEAR");
+    cout << "1 - sort by name\n2 - sort by balance\n";
+    cin >> type;
+    cout << "\n";
+    while (add != NULL) {
+        if(type == 1) {
+        pq.push(add->name);
+        }
+        else {
+            qp.push(add->balance);
+        }
+        add = add->next;
+    }   
+    
+    if(type == 1) {
+        while(!pq.empty()) {
+        cout <<  pq.top() << "\n\n";
+        pq.pop();
+        }
+    }
+
+     if(type == 2) {
+    while(!qp.empty()) {
+        cout <<  qp.top() << "\n\n";
+        qp.pop();
+    }
+    }
+    system("PAUSE");
+
+}
+
+void admin::total_balance(client& object) {
+    node* bal = new node;
+    bal = object.head;
+
+    int balance = 0;
+
+    while(bal != NULL) {
+        balance = (balance + bal->balance);
+        bal = bal->next;
+    }
+    system("CLEAR");
+    cout << "Total money is: " << balance << "\n";
+    system("PAUSE");
+
+}
+
+void admin::overview(client& object) {
+    node* low = new node;
+    low = object.head;
+
+    int l = low->balance, h = 0;
+
+    while(low != NULL) {
+        if(l > low->balance) {
+            l = low->balance;
+        }
+        low = low->next;
+    }
+
+    low = object.head;
+    while(low != NULL) {
+        if(h < low->balance) {
+            h = low->balance;
+        }
+        low = low->next;
+    }
+    system("CLEAR");
+    cout << "The high is " << h << " and the low is " << l << "\n\n";
+    system("PAUSE");
+}
+
+void admin::total_clients(client& object) {
+    time_t tt;
+    time (&tt);
+    struct tm * ti;
+    ti = localtime(&tt);
+    node* total = new node;
+    total = object.head;
+
+    int counter = 0;
+
+    while (total != NULL) {
+        counter++;
+        total = total->next;
+    }
+    system("CLEAR");
+    cout << "Total number of clients are " << counter  << " as of "<< asctime(ti) << endl;
+    system("PAUSE");
+
 }
