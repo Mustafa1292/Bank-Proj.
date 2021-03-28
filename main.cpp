@@ -104,7 +104,7 @@ int main (){
                     cin >> customer_input;
                     break;
 
-            case 4: 
+            case 4: // need a way to transfer from users account to other user
                 system("CLS");
                 cout << "Please enter your account: ";
                 cin >> transfer_from;
@@ -119,8 +119,8 @@ int main (){
                     cin >> customer_input;
                     break;
 
-            case 5:// needs debugging
-                system("CLS");
+            case 5:
+                system("CLEAR");
                 cout << "Enter your account name and password\n";
                 cout << "Name: "; 
                 cin >> verify_name;
