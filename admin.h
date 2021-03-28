@@ -18,6 +18,10 @@ class admin {
         void print(client& object); //passing class object by reference 
         void admin_menu(client& object);
         void menu();
+        void sort(client& object);
+        void total_balance(client& object);
+        void overview(client& object);
+        void total_clients(client& object);
 };
 #endif
 
