@@ -27,14 +27,12 @@ class client {
         void new_account(string identity, int bal, int password); // done
         void delete_account(string identity);
 
-        void find(string identity, int passcode);
+        void find_add(string identity, int passcode);
+        void find_withdraw(string identity, int passcode);
 
         //void setDeposit(string identity, int passcode, int amount);
-        int getDeposit(); 
-
-        void setWithdraw(string identity, int passcode, int amount);
-        int getWithdraw();
-    
+        
+        void find_transfer(string person1, string person2, int transfer);    
     
     friend class admin;
         
