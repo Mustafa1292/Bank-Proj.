@@ -265,10 +265,13 @@ void admin::overview(client& object) {
 }
 
 void admin::total_clients(client& object) {
-    time_t tt;
+    time_t tt; // {
     time (&tt);
     struct tm * ti;
     ti = localtime(&tt);
+
+    //} needed for exact time
+
     node* total = new node;
     total = object.head;
 
@@ -282,4 +285,9 @@ void admin::total_clients(client& object) {
     cout << "Total number of clients are " << counter  << " as of "<< asctime(ti) << endl;
     system("PAUSE");
 
+    
+    ofstream outData; // needed for excel
+    outData.open("stuff.csv", ios::app); 
+    outData << "Total number of clients are " << counter  << " as of "<< asctime(ti) << endl;
+    outData << 1;
 }
