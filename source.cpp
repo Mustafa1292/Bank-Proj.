@@ -99,10 +99,12 @@ void client::new_account(string identity, int bal, int pass) {
 }
 
 void client::delete_account(string identity) { // needs testing then implement actual delete through counter
+    cout << "entered";
     int del_counter = 0;
-    curr = temp = head;
+    curr = head;
+    temp = NULL;
     
-    while(curr->next != NULL) {
+    while(curr->name != identity) {
         if (curr->name == identity){
             cout << curr->name << endl;
             cout << curr->balance << endl;
@@ -113,14 +115,16 @@ void client::delete_account(string identity) { // needs testing then implement a
         curr = curr->next;
 
     }
-    for (int i = 0; i <= del_counter; i++) {
+    for (int i = 0; i < del_counter; i++) {
+        temp = curr;
         curr = curr->next;
-        
+        temp->next = curr;
     }
+        temp->next = curr->next; 
 }
 
 
-void client::find(string identity, int passcode) {
+void client::find_add(string identity, int deposit) {
     node* find = new node;
     find = head;
 
@@ -130,7 +134,7 @@ void client::find(string identity, int passcode) {
 
     if (find->name == identity) {
 
-    find->balance = (find->balance + passcode);
+    find->balance = (find->balance + deposit);
     
     }
     else {
@@ -139,5 +143,44 @@ void client::find(string identity, int passcode) {
 }
 
 
+void client::find_withdraw(string identity, int withdraw) {
+    node* find = new node;
+    find = head;
 
+    while(find->name != identity) {
+        find = find->next;
+    }
 
+    if (find->name == identity && find->balance > withdraw) {
+
+    find->balance = (find->balance - withdraw);
+    
+    }
+    else {
+        cout << "Sorry we were not able to locate your account or your account's balance is less than withdrawal request\n";
+    }
+}
+
+void client::find_transfer(string person_1, string person_2, int amount) {
+    node* person1 = new node;
+    node* person2 = new node;
+    bool flag = false;
+    person1 = head;
+    person2 = head;
+
+    while (person1->name != person_1) {
+        person1  = person1->next;
+    }
+
+    while (person2->name != person_2) {
+        person2  = person2->next;
+    }
+
+    if (person1->name != person_1 && person2->name != person_2) {
+        cout << "One or both of the accounts do not exist, try again";
+    }
+    else {
+        person1->balance = (person1->balance - amount);
+        person2->balance = (person2->balance + amount);
+    }
+}
