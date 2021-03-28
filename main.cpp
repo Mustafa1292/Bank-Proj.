@@ -14,7 +14,7 @@ void customer_menu() {
         cout << "     |                                             |\n";
         cout << "     |                                             |\n";
         cout << "     |              C++ Bank project               |\n";
-        cout << "     |            Fast, safe and secure            |\n";
+        cout << "     |            Safe, fast and secure            |\n";
         cout << "     |                                             |\n";
         cout << "     |_____________________________________________|\n\n";
 
@@ -35,8 +35,8 @@ cout << "Your selection ";
 
 
 int main (){
-    int x, initial_password, initial_deposit, add_deposit, withdrawal, verify_password;
-    string initial_name, transfer, verify_name, find_name;;
+    int x, initial_password, initial_deposit, add_deposit, withdrawal, verify_password, transfer_amount;
+    string initial_name, transfer_from ,transfer_to, verify_name, find_name;;
     client testing_object;
     admin output;
     bool flag = false;
@@ -76,8 +76,7 @@ int main (){
                 cin >> find_name;
                 cout << "Please enter deposit ammount: ";
                 cin >> add_deposit;
-                testing_object.find(find_name, add_deposit);
-                cout << "function will come here\n";
+                testing_object.find_add(find_name, add_deposit);
                 cout << "Thank your deposit has been added\n\n\n";
 
                 admin output; //testing admin menu
@@ -91,10 +90,13 @@ int main (){
                     break;
 
 
-            case 3: //same as deposit, but can't withdraw more than balance
+            case 3: //same as deposit, but can't withdraw more than balance*******
                 system("CLS");
-                cout << "Plsease enter withdrawal amount "; 
+                cout << "Please enter name: ";
+                cin >> find_name;
+                cout << "Please enter withdrawal amount "; 
                 cin >> withdrawal;
+                testing_object.find_withdraw(find_name, withdrawal);
                 cout << "\nYour withdrawal amount is " << withdrawal << endl << endl;
                 system("PAUSE");
                 system("CLEAR");
@@ -102,22 +104,28 @@ int main (){
                     cin >> customer_input;
                     break;
 
-            case 4: // need a way to transfer from users account to other user
+            case 4: 
                 system("CLS");
-                cout << "Last thing to work on\n";
+                cout << "Please enter your account: ";
+                cin >> transfer_from;
                 cout << "Please enter whose account you want to transfer "; 
-                cin >> transfer;
+                cin >> transfer_to;
+                cout << "Please enter transfer amount: ";
+                cin >> transfer_amount;
+                testing_object.find_transfer(transfer_from, transfer_to, transfer_amount);
                 system("PAUSE");
                 system("CLEAR");
                     customer_menu();
                     cin >> customer_input;
                     break;
 
-            case 5:
+            case 5:// needs debugging
                 system("CLS");
                 cout << "Enter your account name and password\n";
-                cout << "Name: "; cin >> verify_name;
-                cout << "\nPassword: "; cin >> verify_password;
+                cout << "Name: "; 
+                cin >> verify_name;
+                testing_object.delete_account(verify_name);
+                // cout << "\nPassword: "; cin >> verify_password;
                 cout << "\n\n Thank you, your account has been deleted.\n\n"; 
                 system("PAUSE");
                 system("CLEAR");
