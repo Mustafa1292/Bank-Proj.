@@ -1,3 +1,4 @@
 # Bank-Proj.
 Data-structure practice
-Testing
+
+Enter 500 to enter admin menu
